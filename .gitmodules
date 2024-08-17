@@ -1,3 +1,0 @@
-[submodule "nvim/lua/neovim"]
-	path = nvim/lua/neovim
-	url = git@github.com:ankanmaiti/neovim.git
