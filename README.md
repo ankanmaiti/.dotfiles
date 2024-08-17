@@ -1,5 +1,7 @@
+# Dotfiles Setup
 
 ## Install CLI Tools
+1. [Kitty](https://sw.kovidgoyal.net/kitty/binary/) : GPU based terminal emulator
 1. [Starship](https://starship.rs/) : A cross-shell prompt.
 1. [Neovim](https://github.com/neovim/neovim) : Vim-fork best editor.
 1. [FZF](https://github.com/junegunn/fzf) : 🌸 A command-line fuzzy finder.
