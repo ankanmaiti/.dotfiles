@@ -1,0 +1,42 @@
+#  ██████╗ ██╗████████╗███╗   ███╗██╗   ██╗██╗  ██╗
+# ██╔════╝ ██║╚══██╔══╝████╗ ████║██║   ██║╚██╗██╔╝
+# ██║  ███╗██║   ██║   ██╔████╔██║██║   ██║ ╚███╔╝
+# ██║   ██║██║   ██║   ██║╚██╔╝██║██║   ██║ ██╔██╗
+# ╚██████╔╝██║   ██║   ██║ ╚═╝ ██║╚██████╔╝██╔╝ ██╗
+#  ╚═════╝ ╚═╝   ╚═╝   ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+# Git in tmux status bar
+# https://github.com/arl/gitmux
+#
+tmux:
+    symbols:
+        branch: " "    # current branch name.
+        hashprefix: ':' # Git SHA1 hash (in 'detached' state).
+        ahead: ↑        # 'ahead count' when local and remote branch diverged.
+        behind: ↓       # 'behind count' when local and remote branch diverged.
+        staged: ''     # count of files in the staging area.
+        conflict: ''   # count of files in conflicts.
+        modified: '*'   # count of modified files.
+        untracked: '?'  # count of untracked files.
+        stashed: '⚑'    # count of stash entries.
+        insertions: Σ   # count of inserted lines (stats section).
+        deletions: Δ    # count of deleted lines (stats section).
+        clean: ✔        # Shown when the working tree is clean.
+    styles:
+        clear: '#[fg=default]'
+        state: '#[fg=red,nobold]'
+        branch: '#[fg=white,nobold]'
+        remote: '#[fg=cyan]'
+        divergence: '#[fg=default,nobold]'
+        staged: '#[fg=green,nobold]'
+        conflict: '#[fg=red,nobold]'
+        modified: '#[fg=red,nobold]'
+        untracked: '#[fg=magenta,nobold]'
+        stashed: '#[fg=cyan,nobold]'
+        clean: '#[fg=green,nobold]'
+        insertions: '#[fg=green,nobold]'
+        deletions: '#[fg=red,nobold]'
+    layout: [flags, divergence, branch]
+    options:
+        branch_max_len: 0
+        branch_trim: right
+        hide_clean: true
