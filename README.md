@@ -16,11 +16,11 @@
 
 ### delete links
 ```bash
-rm -f ~/.bashrc
-rm -f ~/.tmux.conf
-rm -f ~/.config/kitty
-rm -f ~/.config/starship.toml
-rm -f ~/.config/nvim
+rm -rf ~/.bashrc
+rm -rf ~/.tmux.conf
+rm -rf ~/.config/kitty
+rm -rf ~/.config/starship.toml
+rm -rf ~/.config/nvim
 ```
 ### add links
 ```bash
