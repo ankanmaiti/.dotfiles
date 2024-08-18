@@ -1,11 +1,6 @@
 # Dotfiles Setup
 
 
-## Clone Repo with SSH
-```bash
-git clone --recurse-submodules git@github.com:ankanmaiti/dotfiles.git
-```
-
 ## Install CLI Tools
 1. [Kitty](https://sw.kovidgoyal.net/kitty/binary/) : GPU based terminal emulator
 1. [Starship](https://starship.rs/) : A cross-shell prompt.
