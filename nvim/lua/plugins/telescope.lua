@@ -5,7 +5,6 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
-			"folke/noice.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim", version = "*" },
 			{ "nvim-telescope/telescope-ui-select.nvim" },
@@ -61,7 +60,6 @@ return {
 			telescope.load_extension("fzf")
 			telescope.load_extension("live_grep_args")
 			telescope.load_extension("ui-select")
-			telescope.load_extension("noice")
 
 			-- set keymaps
 			local keymap = vim.keymap -- for concisness
