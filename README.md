@@ -18,18 +18,29 @@
 ## Symbolic Links
 
 ### delete links
+
 ```bash
 rm -rf ~/.bashrc
+
 rm -rf ~/.tmux.conf
+
 rm -rf ~/.config/kitty
+
 rm -rf ~/.config/starship.toml
+
 rm -rf ~/.config/nvim
 ```
+
 ### add links
+
 ```bash
 ln -s ~/dotfiles/bash/.bashrc ~/
+
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
+
 ln -s ~/dotfiles/kitty ~/.config/
+
 ln -s ~/dotfiles/starship/starship.toml ~/.config/
+
 ln -s ~/dotfiles/nvim ~/.config/
 ```
