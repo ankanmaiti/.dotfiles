@@ -30,6 +30,8 @@ return {
 
 			keyopts.desc = "Show LSP type definitions"
 			keymap.set("n", "gt", ":Telescope lsp_type_definitions<cr>", keyopts)
+			keyopts.desc = "Go to references"
+			keymap.set("n", "gr", ":Telescope lsp_references theme=dropdown<cr>", keyopts)
 
 			keyopts.desc = "See Code Actions"
 			keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, keyopts)
