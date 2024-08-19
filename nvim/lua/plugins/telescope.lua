@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
@@ -26,15 +27,6 @@ return {
 							-- freeze the current list and start a fuzzy search in the frozen list
 							["<C-space>"] = actions.to_fuzzy_refine,
 						},
-					},
-				},
-				pickers = {
-					["diagnostics"] = {
-						theme = "dropdown",
-						filter = { "error", "warning" },
-					},
-					["marks"] = {
-						theme = "dropdown",
 					},
 				},
 				extensions = {
@@ -82,7 +74,7 @@ return {
 			keymap.set("n", "<leader>cq", ":Telescope quickfix<cr>", keyopts)
 
 			keyopts.desc = "Marks" -- Find Glbal Marks
-			keymap.set("n", "<leader>fm", ":Telescope marks mark_type=global<cr>", keyopts)
+			keymap.set("n", "<leader>fm", ":Telescope marks mark_type=global theme=dropdown<cr>", keyopts)
 
 			keyopts.desc = "Keymaps" -- Find Keymaps
 			keymap.set("n", "<leader>fk", ":Telescope keymaps<cr>", keyopts)

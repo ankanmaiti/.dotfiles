@@ -23,13 +23,14 @@ return {
 			-- set keybinds
 			-- Go to
 			keyopts.desc = "Go to definitions"
-			keymap.set("n", "gd", ":Telescope lsp_definitions<cr>", keyopts)
+			keymap.set("n", "gd", ":Telescope lsp_definitions theme=dropdown<cr>", keyopts)
 
 			keyopts.desc = "Show LSP implementations"
-			keymap.set("n", "gi", ":Telescope lsp_implementations<cr>", keyopts)
+			keymap.set("n", "gi", ":Telescope lsp_implementations theme=dropdown<cr>", keyopts)
 
 			keyopts.desc = "Show LSP type definitions"
-			keymap.set("n", "gt", ":Telescope lsp_type_definitions<cr>", keyopts)
+			keymap.set("n", "gt", ":Telescope lsp_type_definitions theme=dropdown<cr>", keyopts)
+
 			keyopts.desc = "Go to references"
 			keymap.set("n", "gr", ":Telescope lsp_references theme=dropdown<cr>", keyopts)
 
@@ -38,11 +39,11 @@ return {
 
 			-- lsp incoming calls
 			keyopts.desc = "Where the function invoked under the cursor"
-			keymap.set({ "n", "v" }, "<leader>ci", ":Telescope lsp_incoming_calls<cr>", keyopts)
+			keymap.set({ "n", "v" }, "<leader>ci", ":Telescope lsp_incoming_calls theme=dropdown<cr>", keyopts)
 
 			-- lsp outgoing calls
 			keyopts.desc = "Where the function calls other functions"
-			keymap.set({ "n", "v" }, "<leader>co", ":Telescope lsp_outgoing_calls<cr>", keyopts)
+			keymap.set({ "n", "v" }, "<leader>co", ":Telescope lsp_outgoing_calls theme=dropdown<cr>", keyopts)
 
 			-- Rename
 			keyopts.desc = "Smart Rename"
@@ -50,10 +51,10 @@ return {
 
 			-- Diagnostics
 			keyopts.desc = "Document Diagnostics" -- Find Diagnostics (current buffer)
-			keymap.set("n", "<leader>cd", ":Telescope diagnostics bufnr=0<cr>", keyopts)
+			keymap.set("n", "<leader>cd", ":Telescope diagnostics bufnr=0 theme=dropdown<cr>", keyopts)
 
 			keyopts.desc = "Diagnostics" -- Find Diagnostics (CWD)
-			keymap.set("n", "<leader>fd", ":Telescope diagnostics<cr>", keyopts)
+			keymap.set("n", "<leader>fd", ":Telescope diagnostics theme=dropdown<cr>", keyopts)
 
 			keyopts.desc = "Show Line Diagnostics" -- Under Cursor
 			keymap.set("n", "<leader>cl", vim.diagnostic.open_float, keyopts)
