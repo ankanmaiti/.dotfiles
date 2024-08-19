@@ -98,7 +98,6 @@ return {
 				},
 			},
 			commands = {
-
 				-- organize imports
 				OrganizeImports = {
 					function()
@@ -135,13 +134,6 @@ return {
 		lspconfig["html"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-
-		-- configure emmet server
-		lspconfig["emmet_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			filetypes = { "html", "typescriptreact", "javascriptreact", "css" },
 		})
 
 		lspconfig["phpactor"].setup({
