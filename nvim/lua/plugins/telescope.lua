@@ -7,7 +7,6 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim", version = "*" },
-			{ "nvim-telescope/telescope-ui-select.nvim" },
 		},
 
 		config = function()
@@ -19,7 +18,7 @@ return {
 
 			telescope.setup({
 				defaults = {
-					file_ignore_patterns = { "node_modules", ".git", "vendor" },
+					file_ignore_patterns = { "node_modules", ".git", "vendor", "*-lock.json" },
 					mappings = {
 						i = {
 							["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -34,6 +33,9 @@ return {
 						theme = "dropdown",
 						filter = { "error", "warning" },
 					},
+					["marks"] = {
+						theme = "dropdown",
+					},
 				},
 				extensions = {
 					["live_grep_args"] = {
@@ -46,20 +48,12 @@ return {
 						},
 						theme = "dropdown",
 					},
-					--
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({
-							-- even more opts
-						}),
-					},
-					--
 				},
 			})
 
 			-- telescope load extensions
 			telescope.load_extension("fzf")
 			telescope.load_extension("live_grep_args")
-			telescope.load_extension("ui-select")
 
 			-- set keymaps
 			local keymap = vim.keymap -- for concisness
