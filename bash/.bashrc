@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Lang (support for unicode)
 export LANG=en_IN.utf8
 export LC_ALL=en_IN.utf8
@@ -14,29 +16,14 @@ HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# starship prompt
-eval "$(starship init bash)"
-
+# setup NVM (node version manager)
 export NVM_DIR="$HOME/.nvm"                                                                                                                                                                                                               
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm                                                                                                                                                                        
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# setup symbolic links
+export DOTFILES_DIR="$HOME/dotfiles"
+[ -s "$DOTFILES_DIR/scripts/setup_symlinks.sh" ] && \. "$DOTFILES_DIR/scripts/setup_symlinks.sh" 
 
-# setup fzf
-eval "$(fzf --bash)"
-
-# ----- Bat (better cat) -----
-export BAT_THEME="Catppuccin Mocha"
-alias cat="bat"
-
-# ---- Eza (better ls) -----
-alias ls="eza --oneline --icons --no-time --no-permissions --tree --level=1"
-
-# fzf + eza + bat (+ tmux)
-export FZF_DEFAULT_OPTS="--tmux 80% --layout reverse --border" # Open in tmux popup if on tmux
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-
-# better cd with zoxide
-eval "$(zoxide init bash)"
-alias cd="z"
+# cli-tools setup
+[ -s "$DOTFILES_DIR/scripts/setup_cli_tools.sh" ] && \. "$DOTFILES_DIR/scripts/setup_cli_tools.sh" 
