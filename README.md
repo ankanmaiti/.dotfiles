@@ -13,34 +13,18 @@
 1. [TPM](https://github.com/tmux-plugins/tpm) : Tmux Plugin Manager.
 1. [Gitmux](https://github.com/arl/gitmux) : 💻 Git in your tmux status bar.
 1. [Lazygit](https://github.com/jesseduffield/lazygit) : simple terminal UI for git commands.
+1. [Yazi](https://yazi-rs.github.io/) : ⚡️ Blazing fast terminal file manager
+1. [Htop](https://github.com/htop-dev/htop) : An interactive process viewer 
+
+## Project Related Tools
+1. [NVM](https://github.com/nvm-sh/nvm) : Node Version Manager
 
 
-## Symbolic Links
-
-### delete links
-
+## inital setup (execute in terminal)
 ```bash
-rm -rf ~/.bashrc
+# make it exucatable script
+chmod +x $HOME/dotfiles/scripts/setup_symlinks.sh
 
-rm -rf ~/.tmux.conf
-
-rm -rf ~/.config/kitty
-
-rm -rf ~/.config/starship.toml
-
-rm -rf ~/.config/nvim
-```
-
-### add links
-
-```bash
-ln -s ~/dotfiles/bash/.bashrc ~/
-
-ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-
-ln -s ~/dotfiles/kitty ~/.config/
-
-ln -s ~/dotfiles/starship/starship.toml ~/.config/
-
-ln -s ~/dotfiles/nvim ~/.config/
+# execute
+$HOME/dotfiles/scripts/setup_symlinks.sh
 ```
