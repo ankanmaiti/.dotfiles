@@ -23,8 +23,8 @@
 ## inital setup (execute in terminal)
 ```bash
 # make it exucatable script
-chmod +x $HOME/dotfiles/scripts/setup_symlinks.sh
+chmod +x $HOME/.dotfiles/scripts/setup_symlinks.sh
 
 # execute
-$HOME/dotfiles/scripts/setup_symlinks.sh
+$HOME/.dotfiles/scripts/setup_symlinks.sh
 ```

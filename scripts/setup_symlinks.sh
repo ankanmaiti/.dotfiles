@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the path to your dotfiles
-DOTFILES="$HOME/dotfiles"
+DOTFILES="$HOME/.dotfiles"
 
 symlink() {
     local target="$1"

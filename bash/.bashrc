@@ -22,7 +22,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # setup symbolic links
-export DOTFILES_DIR="$HOME/dotfiles"
+export DOTFILES_DIR="$HOME/.dotfiles"
 [ -s "$DOTFILES_DIR/scripts/setup_symlinks.sh" ] && \. "$DOTFILES_DIR/scripts/setup_symlinks.sh" 
 
 # cli-tools setup
