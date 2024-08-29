@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -13,20 +13,77 @@
     # recomended installing from stable branch
     (with pkgs; [
       # list of stable packages goes here
-      hello
       lazygit
+      firefox
       neofetch
     ])
-    
     ++
 
     # avoid installing from unstable branch
     # unless pkgs only work correctly in unstable branch
-    (with nixpkgs-unstable; [ 
+    (with pkgs-unstable; [ 
       # list of unstable packages goes here
-       
+      neovim
+      kitty
+
+      # i3 related
+      dmenu
+      i3status
+      polybar
     ]);
 
+
+  # i3 setup
+  xsession.windowManager.i3 = {
+    enable = true;
+    config = {
+      modifier = "Mod4";
+      terminal = "kitty";
+    };
+  };
+
+
+  programs.i3status = {
+    enable = true;
+  };
+
+
+  # kitty setup
+  programs.kitty = {
+    enable = true;
+    theme = "Catppuccin-Mocha";
+    font = {
+      name = "FiraCode Nerd Font";
+      size = 12;
+    };
+    shellIntegration = {
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
+    settings = {
+      # ligatures
+      disable_ligatures = "never";
+
+      # window styling
+      hide_window_decorations = "yes";
+      window_padding_width = 8;
+      
+      # blur-transparent background
+      dynamic_background_opacity = "yes";
+      background_opacity = "0.5";
+      background_blur = "1";
+      dim_opacity = "0.4";
+    };
+  };
+
+
+  # btop setup
+  programs.btop = {
+    enable = true;
+    settings = {
+      vim_keys = true;
+    };
+  };
 
   programs.git = {
     enable = true;
@@ -34,15 +91,14 @@
     userEmail = "ankanmaiti2@gmail.com";
   };
 
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
   };
+
 
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

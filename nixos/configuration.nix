@@ -2,11 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixpkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
-{
+{ 
   imports =
-    [
+    [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -14,121 +14,119 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking = {
-    hostName = "nixos";
-    networkmanager.enable = true;
-  };
+  networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_IN";
+  i18n = {
+    defaultLocale = "en_IN";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_IN";
+      LC_IDENTIFICATION = "en_IN";
+      LC_MEASUREMENT = "en_IN";
+      LC_MONETARY = "en_IN";
+      LC_NAME = "en_IN";
+      LC_NUMERIC = "en_IN";
+      LC_PAPER = "en_IN";
+      LC_TELEPHONE = "en_IN";
+      LC_TIME = "en_IN";
+      LC_CTYPE="en_US.utf8"; # required by dmenu don't change this
+    };
+  };
 
-  # enable polkit
-  security.polkit.enable = true;
- 
-  # # setup x11
-  # services.xserver = {
-  #   # Enable the X11 windowing system.
-  #   enable = true;
 
-  #   # Enable the Cinnamon Desktop Environment.
-  #   displayManager.lightdm.enable = true;
-  #   desktopManager.cinnamon.enable = true;
+  # touchpad settings
+  services.libinput.touchpad = {
+    disableWhileTyping = true;
+    naturalScrolling = true;
+    sendEventsMode = "disabled-on-external-mouse";
+  };
 
-  #   # Configure keymap in X11
-  #   xkb = {
-  #     layout = "us";
-  #     variant = "";
-  #   };
-  # };
+  # setup x11
+  services.xserver = {
+    enable = true;
 
-  # hyprland
-  programs.hyprland.enable = true;
+    # XFCE desktop environment
+    # desktopManager.lightdm.enable = true;
+    # desktopManager.xfce.enable = true;
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+    # i3 window manager setup
+    windowManager.i3.enable = true;
 
-  # # Enable sound with pipewire.
-  # hardware.pulseaudio.enable = false;
-  # security.rtkit.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   alsa.enable = true;
-  #   alsa.support32Bit = true;
-  #   pulse.enable = true;
-  #   # If you want to use JACK applications, uncomment this
-  #   #jack.enable = true;
+    # Configure keymap in X11
+    xkb.layout = "us";
+  };
 
-  #   # use the example session manager (no others are packaged yet so this is enabled by default,
-  #   # no need to redefine it in your config for now)
-  #   #media-session.enable = true;
-  # };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # for global users
-  users.defaultUserShell=pkgs.bash;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.santu = {
     isNormalUser = true;
     description = "Santu";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # Brightness controll
-  programs.light.enable = false;
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+
+  # Install Fonts
+  fonts = {
+    fontconfig.enable = true;
+    fontDir.enable = true;
+    packages = with pkgs; [
+      # fonts goes here
+      meslo-lg
+
+      # choose from specific nerdfonts
+      (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    ];
+  };
+
 
   # Install system packages
   environment.systemPackages = 
     # recomended installing from stable branch
     (with pkgs; [
       # list of stable packages goes here
-      neovim
+      vim
+
     ])
     
     ++
 
     # avoid installing from unstable branch
     # unless pkgs only work correctly in unstable branch
-    (with nixpkgs-unstable; [
+    (with pkgs-unstable; [
       # list of unstable packages goes here
       
     ]);
 
 
-  # Nix cli helper
   programs.nh = {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/santu/nixos";
+    flake = "/home/santu/.dotfiles/nixos";
   };
 
-  environment.sessionVariables = {
-   #  # If cusor not shown
-   #  WLR_NO_HARDWARE_CURSORS = "1";
-
-   #  # Hint electron apps to use wayland
-   #  NIXOS_OZONE_WL = "1";
-  };
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  # enbale experimental features
+
+  # enable experimentl features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
 }

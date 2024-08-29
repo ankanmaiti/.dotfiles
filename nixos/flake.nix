@@ -2,7 +2,6 @@
   description = "Home Manager configuration of santu";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -20,38 +19,37 @@
       system 		= "x86_64-linux";
       pkgs 		= nixpkgs.legacyPackages.${system};
       pkgs-unstable 	= nixpkgs-unstable.legacyPackages.${system};
-    in 
+    in
     {
 
-
-    # nixos config for a perticular hostname
-    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
 
         modules = [
           ./configuration.nix
         ];
 
-	specialArgs = {
+        specialArgs = {
 	  inherit inputs;
-	  inherit nixpkgs-unstable;
+	  inherit pkgs-unstable;
 	};
       };
 
 
-    # home-manager config for a perticular hostname
-    homeConfigurations.${username}= home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+      # home-manager config
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-      modules = [
-        ./home.nix 
-      ];
+        modules = [
+	  ./home.nix 
+	];
 
-      extraSpecialArgs = {
-        inherit nixpkgs-unstable;
+        extraSpecialArgs = {
+	  inherit inputs;
+	  inherit pkgs-unstable;
+	};
       };
+      
+
     };
-
-
-  };
 }
