@@ -24,12 +24,12 @@
     (with pkgs-unstable; [ 
       # list of unstable packages goes here
       neovim
-      kitty
+      # kitty
 
       # i3 related
       dmenu
-      i3status
-      polybar
+      # i3status
+      # polybar
     ]);
 
 
@@ -51,11 +51,12 @@
   # kitty setup
   programs.kitty = {
     enable = true;
+    package = pkgs-unstable.kitty;
     theme = "Catppuccin-Mocha";
-    font = {
-      name = "FiraCode Nerd Font";
-      size = 12;
-    };
+    # font = {
+    #   name = "FiraCode Nerd Font";
+    #   size = 12;
+    # };
     shellIntegration = {
       enableBashIntegration = true;
       enableZshIntegration = true;
@@ -89,9 +90,6 @@
     enable = true;
     userName = "Ankan Maiti";
     userEmail = "ankanmaiti2@gmail.com";
-  };
-
-  home.file = {
   };
 
 
