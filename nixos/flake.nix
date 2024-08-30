@@ -9,9 +9,11 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { nixpkgs, home-manager, nixpkgs-unstable, ... }@inputs:
+  outputs = { nixpkgs, home-manager, nixpkgs-unstable, nur, ... }@inputs:
     let
       hostname 		= "nixos";
       username 		= "santu";
@@ -26,6 +28,7 @@
         inherit system;
 
         modules = [
+	  nur.nixosModules.nur
           ./configuration.nix
         ];
 
@@ -41,6 +44,7 @@
         inherit pkgs;
 
         modules = [
+	  nur.nixosModules.nur
 	  ./home.nix 
 	];
 
@@ -49,6 +53,9 @@
 	  inherit pkgs-unstable;
 	};
       };
+
+      # setup backup file
+      home-manager.backupFileExtension = "hm-backup";
       
 
     };
