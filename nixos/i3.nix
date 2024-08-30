@@ -51,6 +51,8 @@ in
 	];
       };
       startup = [
+        { command = "systemctl --user restart picom"; notification = false; }
+        { command = "systemctl --user restart polybar"; always = true; notification = false; }
       ];
       keybindings = lib.mkOptionDefault {
         # change focus
@@ -120,8 +122,11 @@ in
   services.picom = {
     enable = true;
     package = pkgs.picom;
+    backend = "glx";
+    vSync = true;
+    activeOpacity = 1;
+    inactiveOpacity = 0.8;
   };
-
 
   programs.i3status = {
     enable = true;
