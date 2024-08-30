@@ -53,10 +53,10 @@
     enable = true;
     package = pkgs-unstable.kitty;
     theme = "Catppuccin-Mocha";
-    # font = {
-    #   name = "FiraCode Nerd Font";
-    #   size = 12;
-    # };
+    font = {
+      name = "FiraCode Nerd Font";
+      size = 12;
+    };
     shellIntegration = {
       enableBashIntegration = true;
       enableZshIntegration = true;
