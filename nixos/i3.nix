@@ -37,6 +37,21 @@ in
     config = {
       modifier = "Mod4";
       terminal = "kitty";
+      window = {
+        titlebar = false; 
+	border = 2;
+	hideEdgeBorders = "smart";
+	commands = [
+	  {
+	    command = "border pixel 3";
+	    criteria = {
+	      class = "^.*";
+	    };
+	  }
+	];
+      };
+      startup = [
+      ];
       keybindings = lib.mkOptionDefault {
         # change focus
 	"${modifier}+h" = "focus left";
@@ -54,51 +69,48 @@ in
 	"${modifier}+r" = "mode resize";
       };
       modes.resize = {
-	"H" 	 = "resize shrink width 10 px or 10 ppt";
-	"J" 	 = "resize grow height 10 px or 10 ppt";
-	"K" 	 = "resize shrink height 10 px or 10 ppt";
-	"L"   	 = "resize grow width 10 px or 10 ppt";
+	"h" 	 = "resize shrink width 10 px or 10 ppt";
+	"j" 	 = "resize grow height 10 px or 10 ppt";
+	"k" 	 = "resize shrink height 10 px or 10 ppt";
+	"l"   	 = "resize grow width 10 px or 10 ppt";
 	"Escape" = "mode default";
 	"Return" = "mode default";
       };
       colors = {
         focused = {
-          title		= col.mantle;
           background	= col.mauve;
           text		= col.mantle;
           indicator	= col.rosewater;
           border	= col.mauve;
+          childBorder	= col.mauve;
         };
         focusedInactive = {
-          title		= col.overlay0;
           background	= col.base;
           text		= col.text;
           indicator	= col.rosewater;
           border	= col.overlay0;
+          childBorder	= col.overlay0;
         };
         unfocused = {
-          title		= col.overlay0;
           background	= col.base;
           text		= col.text;
           indicator	= col.rosewater;
           border	= col.overlay0;
+          childBorder	= col.overlay0;
         };
         urgent = {
-          title		= col.peach;
           background	= col.base;
           text		= col.peach;
           indicator	= col.overlay0;
           border	= col.peach;
+          childBorder	= col.peach;
         };
         placeholder = {
-          title		= col.overlay0;
           background	= col.base;
           text		= col.text;
           indicator	= col.overlay0;
           border	= col.overlay0;
-        };
-        background = {
-          title		= col.base;
+          childBorder	= col.overlay0;
         };
       }; 
 
