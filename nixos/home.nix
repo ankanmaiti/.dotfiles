@@ -3,6 +3,7 @@
 {
   imports = [
     ./i3.nix
+    ./polybar.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -32,7 +33,7 @@
 
       # i3 related
       dmenu
-      polybar
+      # polybar
     ]);
 
 
