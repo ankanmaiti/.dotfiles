@@ -4,6 +4,7 @@
   imports = [
     ./i3.nix
     ./polybar.nix
+    ./yazi.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -31,7 +32,7 @@
     (with pkgs-unstable; [ 
       # list of unstable packages goes here
       neovim
-      # kitty
+      tmux
 
       # i3 related
       dmenu
