@@ -5,6 +5,7 @@
     ./i3.nix
     ./polybar.nix
     ./yazi.nix
+    ./bash.nix
     ./starship.nix
   ];
 
@@ -88,6 +89,7 @@
 
   home.sessionVariables = {
     # EDITOR = "emacs";
+    SHELL  = "bash";
   };
 
 
