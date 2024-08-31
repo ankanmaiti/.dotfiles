@@ -21,6 +21,8 @@
       lazygit
       firefox
       neofetch
+      xclip
+      psmisc # give killall features
     ])
     ++
 
@@ -37,26 +39,6 @@
     ]);
 
 
-  # # i3 setup
-  # xsession.windowManager.i3 = {
-  #   enable = true;
-  #   config = {
-  #     modifier = "Mod4";
-  #     terminal = "kitty";
-  #   };
-  # };
-  #
-  # services.picom = {
-  #   enable = true;
-  #   package = pkgs.picom;
-  # };
-  #
-  #
-  # programs.i3status = {
-  #   enable = true;
-  # };
-
-
   # kitty setup
   programs.kitty = {
     enable = true;
@@ -66,10 +48,10 @@
       name = "FiraCode Nerd Font";
       size = 12;
     };
-    shellIntegration = {
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-    };
+    # shellIntegration = {
+    #   enableBashIntegration = true;
+    #   enableZshIntegration = true;
+    # };
     settings = {
       # ligatures
       disable_ligatures = "never";
