@@ -5,6 +5,7 @@
     ./i3.nix
     ./polybar.nix
     ./yazi.nix
+    ./starship.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
