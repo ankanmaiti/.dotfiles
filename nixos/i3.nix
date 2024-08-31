@@ -1,7 +1,7 @@
 { config, lib, pkgs, pkgs-unstable, ... }:
 let
   modifier = config.xsession.windowManager.i3.config.modifier;
-  col = {
+  colors = {
     rosewater = "#f5e0dc";
     flamingo  = "#f2cdcd";
     pink      = "#f5c2e7";
@@ -37,13 +37,12 @@ in
     config = {
       modifier = "Mod4";
       terminal = "kitty";
+      bars = [];
       window = {
         titlebar = false; 
-	border = 2;
-	hideEdgeBorders = "smart";
 	commands = [
 	  {
-	    command = "border pixel 3";
+	    command = "border pixel 0";
 	    criteria = {
 	      class = "^.*";
 	    };
@@ -51,8 +50,8 @@ in
 	];
       };
       startup = [
-        { command = "systemctl --user restart picom"; notification = false; }
-        { command = "systemctl --user restart polybar"; always = true; notification = false; }
+	{ command = "picom"; always = false; notification = false; }
+	{ command = "polybar"; always = true; notification = false; }
       ];
       keybindings = lib.mkOptionDefault {
         # change focus
@@ -80,39 +79,39 @@ in
       };
       colors = {
         focused = {
-          background	= col.mauve;
-          text		= col.mantle;
-          indicator	= col.rosewater;
-          border	= col.mauve;
-          childBorder	= col.mauve;
+          background	= colors.mauve;
+          text		= colors.mantle;
+          indicator	= colors.rosewater;
+	  border	= colors.mauve;
+	  childBorder	= colors.mauve;
         };
         focusedInactive = {
-          background	= col.base;
-          text		= col.text;
-          indicator	= col.rosewater;
-          border	= col.overlay0;
-          childBorder	= col.overlay0;
+          background	= colors.base;
+          text		= colors.text;
+          indicator	= colors.rosewater;
+	  border	= colors.overlay0;
+	  childBorder	= colors.overlay0;
         };
         unfocused = {
-          background	= col.base;
-          text		= col.text;
-          indicator	= col.rosewater;
-          border	= col.overlay0;
-          childBorder	= col.overlay0;
+          background	= colors.base;
+          text		= colors.text;
+          indicator	= colors.rosewater;
+	  border	= colors.overlay0;
+	  childBorder	= colors.overlay0;
         };
         urgent = {
-          background	= col.base;
-          text		= col.peach;
-          indicator	= col.overlay0;
-          border	= col.peach;
-          childBorder	= col.peach;
+          background	= colors.base;
+          text		= colors.peach;
+          indicator	= colors.overlay0;
+	  border	= colors.peach;
+	  childBorder	= colors.peach;
         };
         placeholder = {
-          background	= col.base;
-          text		= col.text;
-          indicator	= col.overlay0;
-          border	= col.overlay0;
-          childBorder	= col.overlay0;
+          background	= colors.base;
+          text		= colors.text;
+          indicator	= colors.overlay0;
+	  border	= colors.overlay0;
+	  childBorder	= colors.overlay0;
         };
       }; 
 
@@ -124,12 +123,5 @@ in
     package = pkgs.picom;
     backend = "glx";
     vSync = true;
-    activeOpacity = 1;
-    inactiveOpacity = 0.8;
   };
-
-  programs.i3status = {
-    enable = true;
-  };
-
 }

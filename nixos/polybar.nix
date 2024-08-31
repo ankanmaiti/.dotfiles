@@ -41,8 +41,8 @@ in
 {
   services.polybar = {
     enable = true;
-    package = pkgs-unstable.polybar;
-    script = "polybar bar &amp;";
+    package = pkgs.polybar;
+    script = "polybar santu &";
     settings = {
       "colors" = {
         background 			= colors.base;
@@ -53,24 +53,24 @@ in
         alert 				= colors.red;
         disabled 			= colors.subtext1;
       };
-      "bar/toph" = {
+      "bar/santu" = {
         monitor 			= "";
         width 				= "100%";
-        height 				= "28pt";
+        height 				= "16pt";
         radius 				= "0";
         background 			= colors.base;
         foreground 			= colors.text;
         bottom 				= true;
         line-size 			= "6pt";
-        border-size 			= "4pt";
+        border-size 			= "0pt";
         border-color 			= "#00000000";
         padding-left 			= "0";
         padding-right 			= "1";
-        module-margin 			= "1";
-        separator 			= "|";
+        module-margin 			= "0";
+        separator 			= " | ";
         separator-foreground 		= colors.flamingo;
-        # font-0 			= "MesloLGS Nerd Font Mono:size=14;6";
-        modules-left 			= "xworkspaces xwindow";
+        # font-0 				= "monospace;";
+        modules-left 			= "xworkspaces";
         modules-right 			= "pulseaudio battery memory cpu wlan date";
         cursor-click 			= "pointer";
         cursor-scroll 			= "ns-resize";
@@ -79,7 +79,7 @@ in
 
       "module/systray" = {
         type 				= "internal/tray";
-        format-margin 			= "8pt";
+        format-margin 			= "0pt";
         tray-spacing 			= "16pt";
       };
 
@@ -88,7 +88,6 @@ in
         label-active 			= "%name%";
         label-active-background 	= colors.mauve;
         label-active-foreground 	= colors.crust;
-        label-active-underline 		= colors.lavender;
         label-active-padding 		= "1";
         label-occupied 			= "%name%";
         label-occupied-padding 		= "1";
@@ -98,20 +97,6 @@ in
         label-empty 			= "%name%";
         label-empty-foreground 		= colors.disabled;
         label-empty-padding 		= "1";
-      };
-
-      "module/xwindow" = {
-        type 				= "internal/xwindow";
-        label 				= "%title:0:60:...%";
-      };
-
-      "module/filesystem" = {
-        type 				= "internal/fs";
-        interval 			= "25";
-        mount-0 			= "/";
-        label-mounted 			= "%{F#F0C674}%mountpoint%%{F-} %percentage_used%%";
-        label-unmounted 		= "%mountpoint% not mounted";
-        label-unmounted-foreground 	= colors.disabled;
       };
 
       "module/pulseaudio" = {
@@ -124,23 +109,13 @@ in
         label-muted-foreground 		= colors.disabled;
       };
 
-      "module/xkeyboard" = {
-        type 				= "internal/xkeyboard";
-        blacklist-0 			= "num lock";
-        label-layout 			= "%layout%";
-        label-layout-foreground 	= colors.primary;
-        label-indicator-padding 	= "2";
-        label-indicator-margin 		= "1";
-        label-indicator-foreground 	= colors.background;
-        label-indicator-background 	= colors.secondary;
-      };
-
       "module/memory" = {
         type 				= "internal/memory";
         interval 			= "2";
         format-prefix 			= "RAM ";
         format-prefix-foreground 	= colors.primary;
-        label 				= "%percentage_used:2%%";
+        label 				= "%used%";
+	warn-percentage			= "95";
       };
 
       "module/cpu" = {
@@ -151,29 +126,31 @@ in
         label 				= "%percentage:2%%";
       };
 
+      # Use the following command to list batteries and adapters:
+      # ls -1 /sys/class/power_supply/
       "module/battery" = {
         type 				= "internal/battery";
         format-prefix 			= "BAT ";
         format-prefix-foreground 	= colors.primary;
         full-at 			= "99";
-        format-charging 		= "<animation-charging> <label-charging>";
-        animation-charging-0 		= " ";
-        animation-charging-1 		= " ";
-        animation-charging-2 		= " ";
-        animation-charging-3 		= " ";
-        animation-charging-4 		= " ";
-        animation-charging-framerate 	= "750";
-        animation-charging-foreground 	= colors.peach;
-        format-discharging 		= "<ramp-capacity> <label-discharging>";
-        ramp-capacity-0 		= " ";
-        ramp-capacity-1 		= " ";
-        ramp-capacity-2 		= " ";
-        ramp-capacity-3 		= " ";
-        ramp-capacity-4 		= " ";
         low-at 				= "5";
         battery 			= "BAT1";
         adapter 			= "ACAD";
         poll-interval 			= "5";
+        format-charging 		= " BAT <label-charging>";
+        animation-charging-foreground 	= colors.peach;
+        format-discharging 		= "BAT <label-discharging>";
+        # animation-charging-0 		= " ";
+        # animation-charging-1 		= " ";
+        # animation-charging-2 		= " ";
+        # animation-charging-3 		= " ";
+        # animation-charging-4 		= " ";
+        # animation-charging-framerate 	= "750";
+        # ramp-capacity-0 		= " ";
+        # ramp-capacity-1 		= " ";
+        # ramp-capacity-2 		= " ";
+        # ramp-capacity-3 		= " ";
+        # ramp-capacity-4 		= " ";
       };
 
       "network-base" = {
@@ -187,21 +164,23 @@ in
       "module/wlan" = {
         "inherit" 			= "network-base";
         interface-type 			= "wireless";
-        label-connected 		= "%{F#F0C674}%ifname%%{F-} %essid%";
+        label-connected 		= "%{F#F0C674}%ifname%%{F-} %essid% %netspeed%";
       };
 
       "module/eth" = {
         "inherit" 			= "network-base";
         interface-type 			= "wired";
-        label-connected 		= "%{F#F0C674}%ifname%%{F-} %local_ip%";
+        label-connected 		= "%{F#F0C674}%ifname%%{F-} %local_ip% %netspeed%";
       };
 
       "module/date" = {
         type 				= "internal/date";
         interval 			= "1";
-        date 				= "%H:%M";
+        time 				= "%I:%M";
+	date				= "%Y-%m-%d";
+        time-alt 			= "%I:%M:%S";
         date-alt 			= "%Y-%m-%d %H:%M:%S";
-        label 				= "%date%";
+        label 				= "%time%";
         label-foreground 		= colors.primary;
       };
 
