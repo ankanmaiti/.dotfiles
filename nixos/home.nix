@@ -6,6 +6,7 @@
     ./polybar.nix
     ./yazi.nix
     ./bash.nix
+    ./kitty.nix
     ./starship.nix
   ];
 
@@ -42,34 +43,6 @@
     ]);
 
 
-  # kitty setup
-  programs.kitty = {
-    enable = true;
-    package = pkgs-unstable.kitty;
-    theme = "Catppuccin-Mocha";
-    font = {
-      name = "FiraCode Nerd Font";
-      size = 12;
-    };
-    # shellIntegration = {
-    #   enableBashIntegration = true;
-    #   enableZshIntegration = true;
-    # };
-    settings = {
-      # ligatures
-      disable_ligatures = "never";
-
-      # window styling
-      hide_window_decorations = "yes";
-      window_padding_width = 8;
-      
-      # blur-transparent background
-      dynamic_background_opacity = "yes";
-      background_opacity = "0.5";
-      background_blur = "1";
-      dim_opacity = "0.4";
-    };
-  };
 
 
   # btop setup
@@ -88,10 +61,12 @@
 
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
     SHELL  = "bash";
   };
 
+  services.random-background.imageDirectory = {
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
