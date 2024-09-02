@@ -2,8 +2,13 @@
 
 {
   imports = [
-    ./i3.nix
-    ./polybar.nix
+    # ./i3.nix
+    # ./i3blocks.nix
+    # ./polybar.nix
+
+    ./sway.nix
+    ./waybar.nix
+
     ./yazi.nix
     ./bash.nix
     ./kitty.nix
@@ -27,6 +32,7 @@
       neofetch
       xclip
       psmisc # give killall features
+      libinput
     ])
     ++
 
@@ -38,7 +44,7 @@
       tmux
 
       # i3 related
-      dmenu
+      # dmenu
       # polybar
     ]);
 
@@ -65,8 +71,6 @@
     SHELL  = "bash";
   };
 
-  services.random-background.imageDirectory = {
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

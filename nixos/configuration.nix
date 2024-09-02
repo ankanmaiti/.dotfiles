@@ -14,6 +14,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelParams = [ "psmouse:synaptics_intertouch=1" ];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -52,20 +54,27 @@
     sendEventsMode = "disabled-on-external-mouse";
   };
 
-  # setup x11
-  services.xserver = {
+  # services.xserver = {
+  #   enable = true;
+  #
+  #   # i3 window manager setup
+  #   # windowManager.i3.enable = true;
+  #
+  #   # Configure keymap in X11
+  #   xkb.layout = "us";
+  # };
+
+  services.displayManager.enable = true;
+  services.displayManager.sddm = {
     enable = true;
-
-    # XFCE desktop environment
-    # desktopManager.lightdm.enable = true;
-    # desktopManager.xfce.enable = true;
-
-    # i3 window manager setup
-    windowManager.i3.enable = true;
-
-    # Configure keymap in X11
-    xkb.layout = "us";
+    wayland.enable = true;
   };
+
+
+  # required for sway
+  security.polkit.enable = true;
+  programs.sway.enable = true;
+
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
