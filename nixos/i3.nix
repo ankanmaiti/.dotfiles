@@ -49,6 +49,10 @@ in
 	  }
 	];
       };
+      gaps = {
+        inner = 10;
+	outer = 5;
+      };
       startup = [
 	{ command = "picom"; always = false; notification = false; }
 	{ command = "polybar"; always = true; notification = false; }
