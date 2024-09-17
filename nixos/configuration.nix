@@ -54,26 +54,29 @@
     sendEventsMode = "disabled-on-external-mouse";
   };
 
-  # services.xserver = {
-  #   enable = true;
-  #
-  #   # i3 window manager setup
-  #   # windowManager.i3.enable = true;
-  #
-  #   # Configure keymap in X11
-  #   xkb.layout = "us";
-  # };
-
-  services.displayManager.enable = true;
-  services.displayManager.sddm = {
+  # -----------  i3  -----------
+  services.xserver = {
     enable = true;
-    wayland.enable = true;
+
+    # i3 window manager setup
+    windowManager.i3.enable = true;
+
+    # Configure keymap in X11
+    xkb.layout = "us";
   };
 
-
-  # required for sway
-  security.polkit.enable = true;
-  programs.sway.enable = true;
+  # ----------- SWAY -----------
+  # services.displayManager.enable = true;
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  # };
+  #
+  #
+  # # required for sway
+  # security.polkit.enable = true;
+  # programs.sway.enable = true;
+  # ----------------------------
 
 
 

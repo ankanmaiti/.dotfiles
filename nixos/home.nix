@@ -2,12 +2,11 @@
 
 {
   imports = [
-    # ./i3.nix
-    # ./i3blocks.nix
-    # ./polybar.nix
+    ./i3.nix
+    ./polybar.nix
 
-    ./sway.nix
-    ./waybar.nix
+    # ./sway.nix
+    # ./waybar.nix
 
     ./yazi.nix
     ./bash.nix
