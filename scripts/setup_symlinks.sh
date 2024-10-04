@@ -49,6 +49,10 @@ case "$(uname)" in
         symlink "$DOTFILES/bat"                    "$HOME/.config/bat"
         symlink "$DOTFILES/yazi"                   "$HOME/.config/yazi"
         symlink "$DOTFILES/htop"                   "$HOME/.config/htop"
+        symlink "$DOTFILES/i3"                     "$HOME/.config/i3"
+        symlink "$DOTFILES/polybar"                "$HOME/.config/polybar"
+        symlink "$DOTFILES/picom"                  "$HOME/.config/picom"
+        symlink "$DOTFILES/rofi"                  "$HOME/.config/rofi"
         ;;
     *)
         echo "Unsupported OS for symlinks!"
