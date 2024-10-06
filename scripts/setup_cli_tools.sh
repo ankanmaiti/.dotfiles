@@ -4,7 +4,8 @@
 eval "$(starship init bash)"
 
 # setup fzf
-eval "$(fzf --bash)"
+# eval "$(fzf --bash)"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ----- Bat (better cat) -----
 export BAT_CONFIG_PATH="$HOME/dotfiles/bat/bat.conf"
