@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
+    cond = not is_vscode,
 		branch = "0.1.x",
 		event = "VeryLazy",
 		dependencies = {

@@ -1,5 +1,6 @@
 return {
 	"christoomey/vim-tmux-navigator",
+  cond = not is_vscode,
   event = "VeryLazy",
 
 	config = function()

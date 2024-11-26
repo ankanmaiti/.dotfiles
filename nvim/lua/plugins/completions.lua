@@ -2,11 +2,13 @@ return {
 	-- integrates the completion engine with LSP
 	{
 		"hrsh7th/cmp-nvim-lsp",
+    cond = not is_vscode,
 		event = "InsertEnter",
 	},
 	-- provides snippet support
 	{
 		"L3MON4D3/LuaSnip",
+    cond = not is_vscode,
 		event = "InsertEnter",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
@@ -16,6 +18,7 @@ return {
 	-- core completion engine
 	{
 		"hrsh7th/nvim-cmp",
+    cond = not is_vscode,
 		event = "InsertEnter",
 		config = function()
 			local cmp = require("cmp")
@@ -54,6 +57,7 @@ return {
 	-- command line auto-compleation
 	{
 		"hrsh7th/cmp-cmdline",
+    cond = not is_vscode,
 		event = "CmdlineEnter",
 
 		config = function()

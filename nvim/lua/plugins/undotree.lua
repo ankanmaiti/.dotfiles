@@ -1,5 +1,6 @@
 return {
 	"mbbill/undotree",
+  cond = not is_vscode,
 	event = "BufReadPost",
 	config = function()
 		local keymap = vim.keymap -- for concisness

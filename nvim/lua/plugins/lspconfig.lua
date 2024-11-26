@@ -6,6 +6,7 @@
 --
 return {
 	"neovim/nvim-lspconfig",
+  cond = not is_vscode,
 	event = "BufReadPost",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",

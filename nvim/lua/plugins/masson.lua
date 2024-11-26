@@ -6,6 +6,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
+    cond = not is_vscode,
 
 		config = function()
 			local mason = require("mason")
@@ -25,6 +26,7 @@ return {
 	-- automatic install LSP servers
 	{
 		"williamboman/mason-lspconfig.nvim",
+    cond = not is_vscode,
 
 		config = function()
 			require("mason-lspconfig").setup({
@@ -45,6 +47,7 @@ return {
 	-- automatic install language tool (formatter, linter, etc)
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+    cond = not is_vscode,
 
 		config = function()
 			require("mason-tool-installer").setup({

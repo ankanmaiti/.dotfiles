@@ -21,7 +21,7 @@ vim.opt.incsearch = true
 vim.opt.updatetime = 50
 
 -- Use the system clipboard
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- setup copy color
 vim.cmd([[
@@ -31,3 +31,5 @@ vim.cmd([[
   augroup END
 ]])
 
+-- Check if Neovim is running in VSCode
+is_vscode = vim.g.vscode or false

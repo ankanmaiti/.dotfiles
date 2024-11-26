@@ -1,6 +1,7 @@
 return {
 	{
 		"folke/which-key.nvim",
+    cond = not is_vscode,
 		event = "VeryLazy",
 		config = function()
 			vim.o.timeout = true

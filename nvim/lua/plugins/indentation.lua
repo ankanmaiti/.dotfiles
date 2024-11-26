@@ -1,6 +1,7 @@
 return {
 	{
 		"echasnovski/mini.indentscope",
+    cond = not is_vscode,
 		version = "*", -- wait till new 0.7.0 release to put it back on semver
 		event = "BufReadPost",
 		opts = {
@@ -31,6 +32,7 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+    cond = not is_vscode,
 		event = "BufReadPost",
 		opts = {
 			indent = {

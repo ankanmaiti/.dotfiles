@@ -1,5 +1,6 @@
 return {
 	"ThePrimeagen/harpoon",
+	cond = not is_vscode,
 	branch = "harpoon2",
 	event = "VeryLazy",
 	dependencies = {

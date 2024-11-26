@@ -1,5 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim",
+	cond = not is_vscode,
 	event = "BufReadPost",
 	dependencies = {
 		"nvimtools/none-ls-extras.nvim",

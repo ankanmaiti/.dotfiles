@@ -2,6 +2,7 @@ return {
 	-- git signes
 	{
 		"lewis6991/gitsigns.nvim",
+    cond = not is_vscode,
 		event = "BufReadPost",
 
 		config = function()
