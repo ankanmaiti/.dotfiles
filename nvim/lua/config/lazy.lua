@@ -23,11 +23,24 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
-require("lazy").setup({
-	spec = {
-		-- import your plugins
-		{ import = "plugins" }
-	},
-	-- automatically check for plugin updates
-	checker = { enabled = false },
-})
+if vim.g.vscode then
+	require("lazy").setup({
+		spec = {
+			-- import your plugins for vscode
+			{ import = "plugins.treesitter" },
+			{ import = "plugins.textobjects" },
+			{ import = "plugins.surround" },
+		},
+		-- automatically check for plugin updates
+		checker = { enabled = false },
+	})
+else
+	require("lazy").setup({
+		spec = {
+			-- import your plugins
+			{ import = "plugins" },
+		},
+		-- automatically check for plugin updates
+		checker = { enabled = false },
+	})
+end
