@@ -30,6 +30,7 @@ if vim.g.vscode then
 			{ import = "plugins.treesitter" },
 			{ import = "plugins.textobjects" },
 			{ import = "plugins.surround" },
+			{ import = "plugins.jump-in-words" },
 		},
 		-- automatically check for plugin updates
 		checker = { enabled = false },
