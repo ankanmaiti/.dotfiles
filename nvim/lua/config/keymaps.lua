@@ -53,6 +53,12 @@ if is_vscode then
     keyopts.desc = "Go to references"
     keymap.set("n", "gr", vim.lsp.buf.references, keyopts)
 
+    keyopts.desc = "Go to Symbols"
+    keymap.set("n", "gs", vim.lsp.buf.document_symbol, keyopts)
+
+    keyopts.desc = "Go to Workbench Symbols"
+    keymap.set("n", "gS", vim.lsp.buf.workspace_symbol, keyopts)
+
     keyopts.desc = "See Code Actions"
     keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, keyopts)
 
