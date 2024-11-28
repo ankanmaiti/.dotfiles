@@ -33,3 +33,8 @@ vim.cmd([[
 
 -- Check if Neovim is running in VSCode
 is_vscode = vim.g.vscode or false
+
+if is_vscode then
+	vim.notify = require'vscode'.notify
+  print('from neovim to vscode: Hi vscode :)')
+end
